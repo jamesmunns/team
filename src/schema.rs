@@ -126,7 +126,7 @@ impl Person {
     }
 }
 
-#[derive(serde_derive::Deserialize, Debug, Copy, Clone, PartialEq, Eq)]
+#[derive(serde_derive::Deserialize, Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "kebab-case")]
 pub(crate) enum TeamKind {
     Team,
@@ -156,7 +156,7 @@ impl Default for TeamKind {
     }
 }
 
-#[derive(serde_derive::Deserialize, Debug)]
+#[derive(serde_derive::Deserialize, Debug, Clone)]
 #[serde(deny_unknown_fields, rename_all = "kebab-case")]
 pub(crate) struct Team {
     name: String,
@@ -484,7 +484,7 @@ impl Team {
     }
 }
 
-#[derive(serde_derive::Deserialize, Debug)]
+#[derive(serde_derive::Deserialize, Debug, Clone)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
 pub(crate) struct DiscordRole {
     name: String,
@@ -520,7 +520,7 @@ impl std::cmp::Ord for GitHubTeam<'_> {
     }
 }
 
-#[derive(serde_derive::Deserialize, Debug)]
+#[derive(serde_derive::Deserialize, Debug, Clone)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
 pub(crate) struct TeamPeople {
     pub leads: Vec<String>,
@@ -567,7 +567,7 @@ impl<'de> Deserialize<'de> for TeamMember {
     }
 }
 
-#[derive(serde::Deserialize, Debug)]
+#[derive(serde::Deserialize, Debug, Clone)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
 struct GitHubData {
     team_name: Option<String>,
@@ -576,7 +576,7 @@ struct GitHubData {
     extra_teams: Vec<String>,
 }
 
-#[derive(serde_derive::Deserialize, Debug)]
+#[derive(serde_derive::Deserialize, Debug, Clone)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
 pub(crate) struct RfcbotData {
     pub(crate) label: String,
@@ -591,7 +591,7 @@ pub(crate) struct DiscordInvite<'a> {
     pub(crate) channel: &'a str,
 }
 
-#[derive(serde_derive::Deserialize, Debug)]
+#[derive(serde_derive::Deserialize, Debug, Clone)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
 pub(crate) struct WebsiteData {
     name: String,
@@ -652,14 +652,14 @@ impl WebsiteData {
     }
 }
 
-#[derive(serde_derive::Deserialize, Debug)]
+#[derive(serde_derive::Deserialize, Debug, Clone)]
 #[serde(deny_unknown_fields)]
 pub(crate) struct MemberRole {
     pub id: String,
     pub description: String,
 }
 
-#[derive(serde_derive::Deserialize, Debug)]
+#[derive(serde_derive::Deserialize, Debug, Clone)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
 pub(crate) struct TeamList {
     pub(crate) address: String,
@@ -675,7 +675,7 @@ pub(crate) struct TeamList {
     pub(crate) extra_teams: Vec<String>,
 }
 
-#[derive(serde_derive::Deserialize, Debug)]
+#[derive(serde_derive::Deserialize, Debug, Clone)]
 #[serde(rename_all = "kebab-case", deny_unknown_fields)]
 pub(crate) struct RawZulipGroup {
     pub(crate) name: String,

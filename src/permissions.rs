@@ -22,7 +22,7 @@ impl BorsAcl {
     }
 }
 
-#[derive(serde_derive::Deserialize, Debug, Default)]
+#[derive(serde_derive::Deserialize, Debug, Default, Clone)]
 #[serde(rename_all = "kebab-case")]
 pub(crate) struct Permissions {
     #[serde(default)]
